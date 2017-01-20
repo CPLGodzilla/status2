@@ -378,16 +378,22 @@ int main()
 {
 	//config reading code
 	ifstream file("config.json");
-	string json_config;
-	getline(file, json_config);
-
 	picojson::value config;
-	picojson::parse(config, json_config);
+	string port;
+	if(file.is_open()) {
+		string json_config;
+		getline(file, json_config);
 
-	//we'll just blindly trust that the config is in order for now
-	string port = config.get<picojson::object>()["port"].to_str();
-	post_url = config.get<picojson::object>()["webhook_url"].to_str();
+		picojson::parse(config, json_config);
 
+		//we'll just blindly trust that the config is in order for now
+		port = config.get<picojson::object>()["port"].to_str();
+		post_url = config.get<picojson::object>()["webhook_url"].to_str();
+	}
+	else {
+		cout << "Error opening config file! Does it exist?" << endl;
+		return 0;
+	}
 	//set up mongoose http server
 	struct mg_mgr mgr;
 	struct mg_connection *nc;
