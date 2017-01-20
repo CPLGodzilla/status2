@@ -37,7 +37,7 @@ All you need to do is:
 ## Install
 
 1. `git clone https://github.com/Xbetas/gitlab2discord_webhook_bridge.git ~/webhook_bridge`
-1. `cd ~/webhook_bridge/bin`
+1. `cd ~/webhook_bridge`
 1. `premake4 gmake`
 1. `make config=release`
 1. Place the contents of `bin` anywhere you'd like to have them.
