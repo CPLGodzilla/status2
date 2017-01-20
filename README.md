@@ -24,7 +24,8 @@ Also partial support for system hook (push/push_tag) events
 ## Configuration
 
 All you need to do is:
-1. Rename `config.example.json` to `config.json` and open it.
+
+1. Rename `config.example.json` to `config.json` and open it
 1. Set the port you want to use. (default is `4321`)
 1. Generate the webhook url in Discord
 	+ Go to your servers settings
