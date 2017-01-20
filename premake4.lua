@@ -10,7 +10,7 @@ solution "Webhook_Bridge"
 	---------------
 	kind "ConsoleApp"
 	--Compiler--
-	--buildoptions { "-std=c++14" } --already done in newer compilers
+	buildoptions { "-std=c++14" } --already done in newer compilers
 	files { "src/**.h", "src/**.cpp" }
 	--pchsource "DecoyEngine/src/stdafx.cpp"
 	--pchheader "DecoyEngine/src/stdafx.h"
