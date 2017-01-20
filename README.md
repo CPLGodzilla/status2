@@ -17,7 +17,6 @@ Also partial support for system hook (push/push_tag) events
 
 ## Requires
 
-+ mongoose
 + curl
 + premake 4 (for generating project files)
 

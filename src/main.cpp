@@ -6,8 +6,8 @@
 using namespace std;
 
 #include <curl/curl.h>
-#include <mongoose.h>
 
+#include "mongoose.h"
 #include "picojson.h"
 
 //url to post webhooks to (gets filled by config reading in main)
