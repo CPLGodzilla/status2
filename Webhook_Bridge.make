@@ -26,10 +26,10 @@ ifeq ($(config),debug)
   DEFINES   += -D_DEBUG -DDEBUG
   INCLUDES  += -Isrc
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
-  CFLAGS    += $(CPPFLAGS) $(ARCH) -g -Wall
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -g -Wall -std=c++14
   CXXFLAGS  += $(CFLAGS) 
   LDFLAGS   += 
-  LIBS      += -lcurl -lmongoose
+  LIBS      += -lcurl
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
@@ -48,10 +48,10 @@ ifeq ($(config),release)
   DEFINES   += -DNDEBUG
   INCLUDES  += -Isrc
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
-  CFLAGS    += $(CPPFLAGS) $(ARCH) -O3 -ffast-math -msse2
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -O3 -ffast-math -msse2 -std=c++14
   CXXFLAGS  += $(CFLAGS) 
   LDFLAGS   += -s
-  LIBS      += -lcurl -lmongoose
+  LIBS      += -lcurl
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
@@ -65,6 +65,7 @@ endif
 
 OBJECTS := \
 	$(OBJDIR)/main.o \
+	$(OBJDIR)/mongoose.o \
 
 RESOURCES := \
 
@@ -128,5 +129,8 @@ endif
 $(OBJDIR)/main.o: src/main.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/mongoose.o: src/mongoose.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)

@@ -11,7 +11,7 @@ solution "Webhook_Bridge"
 	kind "ConsoleApp"
 	--Compiler--
 	buildoptions { "-std=c++14" } --already done in newer compilers
-	files { "src/**.h", "src/**.cpp" }
+	files { "src/**.h", "src/**.cpp", "src/**.c", "src/**.hpp" }
 	--pchsource "DecoyEngine/src/stdafx.cpp"
 	--pchheader "DecoyEngine/src/stdafx.h"
 	--Linker--
@@ -23,7 +23,7 @@ solution "Webhook_Bridge"
 	end
 	if os.is("linux") then		
 		includedirs { "src/" }
-		links { "curl", "mongoose" }
+		links { "curl" }
 	end
 	if os.is("macosx") then		
 		includedirs { "src/", "include/" }
